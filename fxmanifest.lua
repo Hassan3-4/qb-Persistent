@@ -2,20 +2,26 @@ fx_version 'cerulean'
 game 'gta5'
 
 author 'YourName'
-description 'Persistent Vehicle System'
+description 'Persistent Vehicle System with Vehicle Keys'
 version '3.0.0'
 
-client_scripts {
-    'client.lua'
+shared_scripts {
+    'config.lua' -- Shared configuration
 }
 
+client_scripts {
+    'client/client.lua', -- Your original client script
+    'client/persistent_vehicles_client.lua' -- Persistent vehicle logic
+}
 
 server_scripts {
     '@oxmysql/lib/MySQL.lua',
-    'server.lua'
+    'server/server.lua', -- Your original server script
+    'server/persistent_vehicles_server.lua' -- Persistent vehicle logic
 }
 
 dependencies {
     'qb-core',
-    'oxmysql'
+    'oxmysql',
+    'qb-vehiclekeys'
 }
